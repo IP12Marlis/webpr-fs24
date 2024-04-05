@@ -8,7 +8,8 @@ const west  = {dx: -1, dy:  0};
 // zu Beginn des Spiels gesetzte Richtung der Snake -> Kopf gegen den oberen Spielflächenrand zeigend.
 let direction = north;
 
-// Wo wird das genutzt?
+// Das wird beim Richtungswechsel durch die Pfeiltasten genutzt.
+// rechte Pfeiltaste löst 'clockwise' aus und die hier gespeicherte Reihenfolge bestimmt, wohin die Snake abbiegt.
 const clockwise = [north, east, south, west, north];
 const countercw = [north, west, south, east, north];
 
