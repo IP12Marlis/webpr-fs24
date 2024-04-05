@@ -9,12 +9,68 @@
 
         const test = x => document.writeln( String(x));
 
-        x = 0;  // even if done badly...
+        let x = 0;  // immer zuerst const anstatt let hinschreiben. Erst wenn ich es wirklich ändern will, auf let wechseln
+                    // Ziel: von 100 Zuweisungen 1 mal let verwenden, sonst const
+        // x = 0;   // even if done badly... -> so landet x im globalen scope und wenn ich innerhalb des Funktionsscopes
+                    // ebenfalls x ohne let initialisiere, wird damit das globale x überschrieben.
+                    // 2. Fall: äusserer Scope: let x; innerhalb Funktion: x ohne let, überschreibt ebenfalls das x des
+                    // äusseren Scopes.
 
-        ( () => {       // IIFE for a local scope
+        // aus:
+        // function foo() {
+        //     let x = 1;       // lokales x heisst zwar gleich wie das x ausserhalb des Funktionsscopes, ist aber
+                                // eine davon unabhängige Variable. -> shadowing
+        //     document.writeln(String(x));
+        // }
+        // foo();
+
+        // lokale Scopes als freistehender Block -> ist kein Ausdruck (Expression) // seit ca. 2017 - ECMA-SCRIPT 8
+        // Funktionen und relativ neu kann man {  } als lokalen Scope verwenden.
+        // Vorher gab es das nicht, weil die Grammatik dadurch etwas schwieriger wird.
+        // {} braucht man, um Objekte zu konstruieren (literaler Objektkonstruktor),
+        // {
+        //     let x = 1;
+        //     document.writeln(String(x));
+        // }
+
+        // so ist es ein literaler Objektkonstruktor; es ist ein Ausdruck und evaluiert zu einem Objekt mit der Property a.
+        // {
+        //     a: = 1;
+        // }
+
+        // Es gibt scheinbar unnütze Funktionen, die nur dazu da sind, einen lokalen Scope zu haben -> älterer Code
+        // Nachteil: Das Ding braucht einen Namen. -> named functions -> Namensraumverschmutzung
+        // Weg zur Alternative:
+        // function foo() {
+        //     let x = 1;
+        //     document.writeln(String(x));
+        // } (); // Das ist syntaktisch nicht ganz korrekt, weil die function foo kein Ausdruck ist, sondern eine
+        // Funktionsdeklaration -> keine Expression.
+
+        // (function foo() {
+        //     let x = 1;
+        //     document.writeln(String(x));
+        // }) ();
+        // Wenn ich um die Funktionsdeklaration runde Klammern setze, wird daraus eine Expression, ein Ausdruck.
+        // Das heisst: function expression
+
+        // (function () {
+        //     let x = 1;
+        //     document.writeln(String(x));
+        // }) ();
+        // Jetzt kann man sogar den Namen der Funktion weglassen -> anonyme Funktion.
+        // Daraus lässt sich nun eine Lambda-Funktion bilden -> function vorne entfernen, Lambda-Pfeil (fat arrow) zwischen
+        // Argumentklammern und geschweifte Klammer
+
+        // function expression -> hier immediately invoked function expression = IIFE
+        // immer ohne Parameter
+        ( () => {       // IIFE for a local scope -> Weihnachtsmann-Emoji ()=> Kopf mit Bart
             let x = 1;  // does not accidentally override outer scope
             document.writeln(String(x));
         }) ();
+        // Bundler nutzen das manchmal, damit beim Zusammenziehen von JS-Code verhindert wird,
+        // dass die Codeteile sich gegenseitig Variablen überschreiben.
+
         document.writeln(String(x));
 
         // lambda calculus
