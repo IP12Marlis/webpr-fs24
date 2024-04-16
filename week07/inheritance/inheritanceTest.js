@@ -13,13 +13,17 @@
             return ""
         }
         work() {
+            // diese beiden this sind verschieden; this.worklog bezieht sich auf ...
+            // this.mustDo() bezieht sich auf ...
+            // es gibt 1000 Mögl., wie man darauf zugreifen kann, solche die man aktiv macht, und solche die aus Versehen passieren
             this.worklog.push(this.mustDo())
         }
     }
 
-    const p = new Person("unknown");
-    ok.push(p.worklog.length === 0);  // initially empty
-    p.work();
+    const p = new Person("unknown"); // weil wir hier new geschrieben haben, stehen die Dinge aus dem Konstruktor zur Verfügung
+    ok.push(p.worklog.length === 0);  // initially empty, das worklog ist direkt auf dem Objekt drauf, jeder hat seinen eigenen worklog
+    p.work(); // wenn ich auf p das work aufrufe, dann ist das gar nicht auf dem Objekt p, sondern der Prototyp hat das drauf
+    // Ablauf: es wird erst auf dem Obj. gesucht, dann auf dem Prototyp des Konstruktors
     ok.push(p.worklog[0] === "");     // superclass impl
 
     class Student extends Person {
