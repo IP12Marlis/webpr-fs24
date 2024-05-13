@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 7 - Quiz</title>
+</head>
+<body>
+<script>
+/*
+    Assignment: Function composition
+
+    JavaScript is functional and functional languages should provide function composition.
+    Let's assume we have functions like
+     const inc     = x => x + 1;
+     const double  = x => x * 2;
+    Provide a general function 'then' that can combine _any_ such functions such that
+     inc.then(double).then(double)
+    can be used like
+     inc.then(double).then(double) (1) === 8;
+
+    Note: you cannot assume what the functions are actually doing.
+    It must work for all functions!
+ */
+
+    const inc = x => x + 1;
+    const double = x => x * 2;
+
+    const then = x => y => y(x);
+
+    console.log(inc.then(double).then(double) (1));
+
+</script>
+
+</body>
+</html>

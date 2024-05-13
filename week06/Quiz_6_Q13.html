@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 6 - Quiz</title>
+</head>
+<body>
+<script>
+
+    document.writeln("Q13 Prototype and 'new' ");
+
+/*
+    function Empty() { };
+
+    const empty = new Empty;
+    Empty.prototype.answer = 42;
+
+    document.writeln(empty.answer === 42);
+    // shows 'true' - Yes
+    */
+
+/*
+    const Empty = ( () => {
+        function Empty() { }
+        return Empty;
+    }) ();
+    const empty = Empty;
+    document.writeln(empty instanceof Empty);
+    // shows 'true' - No
+    */
+
+/*
+    const Empty = ( () => {
+        function Empty() { }
+        return Empty;
+    }) ();
+    const empty = new Empty;
+    const also = new Empty;
+    Empty.prototype.answer = 42;
+
+    document.writeln(empty.answer === 42 && also.answer === 42);
+    // shows 'true' - Yes
+    */
+
+/*
+    const Empty = ( () => {
+        function Empty() { }
+        return Empty;
+    }) ();
+    const empty = new Empty;
+    document.writeln(empty instanceof Empty );
+    // shows 'true' - Yes
+    */
+
+
+</script>
+
+</body>
+</html>

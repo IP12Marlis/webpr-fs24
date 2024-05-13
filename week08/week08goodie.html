@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 8 - Goodie</title>
+</head>
+<body>
+<script>
+    // object deconstruction - right hand side, left hand side position
+/*
+    const foo = ({a,b}) => ...;
+    const {a,b} = ...;
+*/
+
+    // Array deconstruction - wird sehr oft gebraucht
+    // und es funktioniert nicht nur mit Arrays, sondern auch mit
+    // allen Dingen, die dem Iterator-Protocol folgen.
+    // Strings, html-collections, node-lists,
+    const [x, y] = [0, 1, 2, 3, 4];
+    console.log(x);
+    console.log(y);
+
+    const [x2, y2, z2] = [0];
+    // gibt für x2 = 0, y2, z2 -> undefined
+
+    const [x3, y3, ...z3] = [0, 1, 2, 3, 4, 5];
+    // gibt für x3, y3 die ersten beiden ArrPos. aus und für z3 ein Array mit
+    // allen übrigen Einträgen
+
+    const x4 = 0;
+    const y4 = 1;
+    [x4, y4] = [y4, x4];
+    // die beiden Referenzen werden vertauscht
+
+   // const bar = (arr) => console.log(arr[0]);
+    const bar = ([x,y]) => console.log(x, y);
+    bar([0,1,2,3,4,5]);
+
+
+</script>
+</body>
+</html>

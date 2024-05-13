@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 7 - Quiz</title>
+</head>
+<body>
+<script>
+    document.writeln("Q15 - ES6 Classes");
+
+/*
+    class Person {
+        constructor(name) {
+        }
+        isCool() { return this.name.length > 3 };
+    }
+    const p = new Person("Dierk");
+    document.writeln(p.isCool());
+    // shows 'true' - No
+    */
+
+/*
+     class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        isCool() { return this.name.length > 3 };
+    }
+    const p = new Person("Joe");
+    Person.prototype.isCool = () => true;
+    document.writeln(p.isCool());
+    // shows 'true' - Yes
+    */
+
+/*
+    class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        isCool() { return this.name.length > 3 };
+    };
+    const p = new Person("Dierk");
+    document.writeln(p.isCool());
+    // shows 'true' - Yes
+    */
+
+/*
+    class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        isCool() { return this.name.length > 3 };
+    }
+    const p = new Person("Joe");
+    p.isCool = () => true;
+    document.writeln(p.isCool());
+    // shows 'true' - Yes
+    */
+
+/*
+    class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        isCool() { return this.name.length > 3 };
+    }
+    const p = new Person("Dierk");
+    document.writeln(p.name === "Dierk");
+    // shows 'true' - Yes
+    */
+
+/*
+    class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        isCool() { return this.name.length > 3 };
+    }
+    const p = new Person("Dierk");
+    const joe = {
+        name: "joe",
+        cool: p.isCool
+    };
+    document.writeln(joe.cool());
+    // shows 'true' - No
+    */
+
+/*
+    class Person {
+        isCool() { return this.name.length > 3 };
+    }
+    const p = new Person();
+    p.name = "Dierk";
+    document.writeln(p.isCool());
+    // shows 'true' - Yes
+    */
+
+/*
+    class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        isCool() { return this.name.length > 3 };
+    }
+    const p = new Person("Joe");
+    p.prototype.isCool = () => true;
+    document.writeln(p.isCool());
+    // shows 'true' - No
+    */
+
+    class Person {
+        constructor(name) {
+            this.name = name
+        }
+        isCool() { return name === 'Dierk' };
+    }
+    const p = new Person("Dierk");
+    document.writeln(p.isCool());
+    // Shows 'true' - No
+
+</script>
+
+</body>
+</html>

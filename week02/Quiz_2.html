@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Week 2 - Q5 - Q6</title>
+</head>
+<body>
+<script>
+    document.writeln("Q5 - IIFE -> Immediately invoked function expression");
+
+/*    x = 0; // global variable!
+    ( () => {
+        x = 2;
+        return x;
+    })();
+
+    try { // is x unchanged?
+        document.writeln(x === 0)
+    } catch (e) {
+        document.writeln(false)
+    }       // shows 'false'*/
+
+/*
+    let x = 0;
+    function two() {
+        let x = 2;
+        return x;
+    }();                // nicht korrekte Syntax für die function
+
+    try { // is x unchanged?
+        document.writeln(x === 0)
+    } catch (e) {
+        document.writeln(false)
+    }       // shows nicht 'true' (für true müssten um die function inkl. Block Klammern gesetzt werden.)
+*/
+
+/*    let x = 0;
+    function two() {
+        let x = 2;
+        return x;
+    }
+    two();
+
+    try { // is x unchanged?
+        document.writeln(x === 0)
+    } catch (e) {
+        document.writeln(false)
+    }       // shows 'true'*/
+
+/*    let x = 0;
+    ( () => {
+        let x = 2;
+        return x;
+    }) ();
+
+    try { // is x unchanged?
+        document.writeln(x === 0)
+    } catch (e) {
+        document.writeln(false)
+    }       // shows 'true'*/
+
+/*    let x = 0;
+    (function two() {
+        let x = 2;
+        return x;
+    }) ();
+
+    try { // is x unchanged?
+        document.writeln(x === 0)
+    } catch (e) {
+        document.writeln(false)
+    }       // shows 'true'*/
+
+/*    let x = 0;
+    (function () {
+        let x = 2;
+        return x;
+    }) ();
+
+    try { // is x unchanged?
+        document.writeln(x === 0)
+    } catch (e) {
+        document.writeln(false)
+    }       // shows 'true'*/
+
+    document.writeln("**********************");
+
+    document.writeln("Q6 - Equivalent lambda (function) definitions");
+/*    // Are id1 and id2 alpha-equivalent? yes
+    const id1 = x => x;
+    const id2 = y => y;
+
+    // Given 'idA2', is a1 a proper beta expansion of a2? yes
+    const idA2 = x => x;
+    const a1 = y => idA2(y);
+    const a2 = y => y; // dies ist auch die id-Funktion
+    // -> gibt denselben Wert zurück, der entgegengenommen wurde.
+
+    // Given 'idA3' and 'konst', is F3 a proper eta reduction of F2?
+    const idA3 = x => x; // Identitätsfunktion
+    const konst = x => y => x;
+    const F1 = x => y => konst (idA3) (x) (y); // mich stört, dass hier beim konst drei Argumente mitgegeben werden
+    const F2 = x =>      konst (idA3) (x);
+    const F3 =           konst (idA3)
+
+    // Are F4 and F5 alpha-equivalent? - jaaa?
+    const F4 = x => (x => x);
+    const F5 = y => (x => y);
+
+    // Given 'idA5', is a4 a proper beta reduction of a3? - ja
+    const idA5 = x => x;
+    const a3 = y => idA5(y);
+    const a4 = y => y;*/
+
+    document.writeln("Q6a - first - second")
+/*    const id = y => y;
+    const fst = x => y => x;
+    const snd = fst => id => id;
+
+    document.writeln(snd(3)(5) === 5);*/
+
+</script>
+
+</body>
+</html>

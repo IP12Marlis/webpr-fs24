@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 7 - Quiz</title>
+</head>
+<body>
+<script>
+    document.writeln("Q16 - Prototypes and inheritance");
+
+/*
+    class Person { }
+    class Student { }
+    const s = new Student();
+    Object.setPrototypeOf(s, Person.prototype);
+    document.writeln(s instanceof Student);
+    // shows 'true' - No
+    */
+
+/*
+    class Person { }
+    class Student extends Peson {}
+    cons s = new Student();
+
+    document.writeln(s instanceof Person);
+    // shows 'true' - No
+    */
+
+/*
+    class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        isCool() { return this.name.length > 3 };
+    };
+    const p = new Person("Dierk");
+    document.writeln(p instanceof Person);
+    // shows 'true' - Yes
+*/
+
+/*
+    class Person {
+
+    }
+    const p = { };
+    Object.setPrototypeOf(p, Person.prototype);
+    document.writeln(p instanceof Person);
+    // shows 'true' - Yes
+    */
+
+/*
+    class Person { }
+    class Student extends Person {}
+    const s = new Student();
+    document.writeln(s instanceof Student);
+    // shows 'true' - Yes
+    */
+
+/*
+    class Person {
+
+    }
+    const p = { };
+    Object.setPrototypeOf(p, Person);
+    document.writeln(p instanceof Person);
+    // shows 'true' - No
+    */
+
+/*
+    class Person { }
+    class Student { }
+    const s = new Student();
+    Object.setPrototypeOf(Student, Person);
+    document.writeln(s instanceof Person);
+    // shows 'true' - No
+    */
+
+    class Person { }
+    class Student { }
+    const s = new Student();
+    Object.setPrototypeOf(Student.prototype, Person.prototype);
+    document.writeln(s instanceof Person);
+    // shows 'true' - Yes
+
+</script>
+
+</body>
+</html>

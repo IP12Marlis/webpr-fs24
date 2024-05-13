@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goodies</title>
+</head>
+<body>
+<script>
+const ary = [1, 2, 3];
+ary[0];
+ary[0] = 6M;
+// Selektor und ...
+
+const obj = {a:1, b:2}
+// die keys sind immer Strings, es ist ein mapping; es gibt andere Arten von mappings mit dem keyword map
+obj.a;
+obj.a = 6;
+//Ich kann auf die Serie von Properties und Values über eine Variable zugreifen
+let z = "a";
+obj["a"]; // Ausgabe 6
+obj[z]; // greift auch auf den Wert unter key a zu
+{a: 7, b: 2}
+
+// Das Array ist wie ein Objekt, deren keys Ordinalzahlen sind.
+// Der Objektzugriff ist nicht wie eine Hashmap, denn die Implementierung macht die JS Engine, und zwar so, dass es super
+// effizient ist. Man muss sich nicht überlegen, wie viel Speicher
+// Wie ist denn das, wenn ich eine literale Deklaration hat?
+{ b: 2, [z]: 3} // z soll a sein => das heisst, ich nehme den Wert von z und ordne ihn der Variablen a zu.
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Week 6 - Quiz</title>
+</head>
+<body>
+<script>
+
+    document.writeln("Q14 - Safe Object construction");
+
+    const Person = name => {
+        let age = 0;
+        return {
+            getAge: () => age,
+            setAge: newAge => age = newAge,
+            getName: () => name,
+            setName: newName => name = newName
+        }
+    };
+
+    const me = Person("Myself");
+/*    me.age = 50;
+    document.writeln(me.getAge() === 50);*/
+    // shows 'true' - No
+
+    me.setName("Sherlock");
+//    document.writeln(me.getName() === "Sherlock");
+    // shows 'true' - Yes
+
+    me.setAge(50);
+    document.writeln(me.getAge() === 50);
+    // shows 'true' - Yes
+
+    me.name = "***";
+    document.writeln(me.getName() === "***");
+    // shows 'true' - No
+
+</script>
+
+</body>
+</html>

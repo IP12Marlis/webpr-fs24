@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz 5</title>
+</head>
+<body>
+
+<script>
+    document.writeln("Q10a");
+    /*
+    Your user has entered a new business rule on how to calculate this year's bonuses.
+    He entered a formula through a web form and it is available through the _string_ variable 'bonusFormula'.
+    The formula refers to the employee as 'employee' like in 'employee.bonus = employee.revenue * 0.2'
+
+    Provide a function (or lambda expression) named 'bonusCalculation' that calculates an employee's bonus by using
+    the user-provided bonusFormula.
+
+    Do _NOT_ use the "Function" class.
+     */
+    const bonusFormula = "";
+    const employee = {
+        bonus: 0,
+        revenue: 3500,
+    };
+
+    function bonusCalculation(employee) {return employee.bonus = employee.revenue * 0.2;}
+    document.writeln(employee.revenue);
+    document.writeln(employee.bonus);
+
+    // Tests
+    const e = {revenue: 10000, bonus: null};
+    bonusCalculation(e);
+    e.bonus === e.revenue * factor_;
+</script>
+
+</body>
+</html>

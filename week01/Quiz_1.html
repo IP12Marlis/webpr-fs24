@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Week 1 - Q1 - Q4</title>
+</head>
+<body>
+<script>
+    const test = x => document.writeln( String(x) );
+
+    document.writeln("Quizaufgaben Q1 - Q4");
+
+    // Q1 - 1 => erdachte Ausgabe: "undefined" - nein, weil die Variable x nicht vorgängig deklariert und initiiert wurde.
+    // const foo = (x) => true;
+    // test(foo()); // "true" wieso ist das so? -> Video: es ist eine korrekte Lambdafunktion
+    // Der nicht genutzte Parameter wird einfach ignoriert.
+
+    // Q1 - 2 => erdachte Ausgabe: "true" - ja -> korrekte Schreibweise ohne return in Lambda-Funktion
+    // const foo = () => true;
+    // test(foo());
+
+    // Q1 - 3 => erdachte Ausgabe: "true" - ja -> korrekte Schreibweise einer named function
+    // function foo() {
+    //     return true;
+    // }
+    // test(foo());
+
+    // Q1 - 4 => erdachte Ausgabe: "Fehlermeldung" - nein, weil foo eine Konstante und keine Funktion ist.
+    // const foo = true;
+    // test(foo());     // gar keine Ausgabe:
+    // Wo finde ich die Fehlermeldung: Uncaught TypeError: foo is not a function -> Debugger statt einfach Run
+
+    // Q1 - 5 => erdachte Ausgabe: "Fehlermeldung" - nein, kein return vorhanden
+    //  function foo() {
+    //       true;
+    //  }
+    //  test(foo()); // undefined -> fehlendes return führt dazu, dass für js nicht klar ist, was zurückgegeben wird.
+
+    // Q1 - 6 => erdachte Ausgabe: "undefined" - nein, foo wird als Varable statt aus Funktion ausgewertet und ist nicht definiert.
+    //  function foo() {
+    //       return true;
+    //  }
+    //  test(foo); // gibt zurück: function foo() { return true; } --- es wird der Code als Text ausgegeben. Praktisch, wenn man
+    // eine Anleitung oder eine Dokumentation auf einer Webseite schreiben will. Evtl. für Toolbox nutzen.
+
+    // Q1 - 7 => erdachte Ausgabe: "true" ja, korrekte Lambda-Funktion, übergebenes Argument wird ignoriert
+    // const foo = () => true;
+    // test(foo(1));
+
+    // Q2 - Multiple argument functions and referencing functions
+    // a) shows '2': yes
+    function one(x) {
+        return x;
+    }
+    function two(x, y) {
+        return x + y;
+    }
+    function three(x, y, z) {
+        return x + y + z;
+    }
+    const functions = [null, one, two, three];
+    //test(functions[2](1, 1, 1));
+
+    // *************************************************
+
+    // b) shows '3' - no -> NaN wird ausgegeben
+    //test(functions[3](1, 1));
+
+    // c) shows '1' - yes
+    //test(functions[1](1));
+
+    // Q3a - identity function
+    // Write a function named 'id' that returns its argument, such that for all x, id(x) === x
+    function id(x) {
+        return x;
+    }
+    // the solution will be tested against:
+    const x_ = Math.random();
+ //   test( id(x_) === x_ );
+
+    // Q3b - curried function with => notation
+    // Write a function named 'plus' that returns the sum of its arguments,
+    // where the arguments are being passed in curried style, such that
+    // for all numbers x and y, plus(x)(y) === x + y.
+    // Use the => notation exclusively, i.e. no "function" keyword.
+
+    // todo: Hier habe ich noch zu beissen
+
+/*            const plus = x => y => x + y;
+            const add = z => ;
+            const plus3 = y => y + 3;
+
+            // the solution will be tested against:
+            //const x_ = Math.random(); -> already intoduced -> line 78
+            const y_ = Math.random();
+            // test(plus(x_)(y_) === x_ + y_); // einzeln getestet -> okay
+            const tplus = addNumbers(add);
+            const tplus3 = plus(3);
+            test(tplus(x_)(y_) === x_ + y_ && tplus3(y_) === y_ + 3);*/
+
+
+
+    // Q4
+    document.writeln("Q4: ");
+
+/*    let x = 0;
+    function two() {
+        x = 2;
+        return x;
+    }
+    two();
+
+    try { // is x in scope? - shows 'false'
+        x;
+        document.writeln(x === 0)
+    } catch (e) {
+        document.writeln(false)
+    }*/
+
+
+/*    function two() {
+        x = 2;
+        return x;
+    }
+
+    two();
+
+    try { // is x in scope? - shows 'true'
+        x;
+        document.writeln(true)
+    } catch (e) {
+        document.writeln(false)
+    }*/
+
+
+    /*        function two3() {
+                j = 2;
+                return j;
+            }
+            two3();*/
+
+    /*        function two4() {
+                let j = 2;
+                return j;
+            }*/
+
+    /* let j = 0;
+     function two5() {
+         let j = 2;
+         return j;
+     }
+     two5();*/
+    try {
+        j;
+        document.writeln(j === 0);
+    } catch (e) {
+        document.writeln(false);
+    }
+</script>
+</body>
+</html>
