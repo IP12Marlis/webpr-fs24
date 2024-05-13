@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+<body>
+<script>
+
+/*    const idPromise = x => new Promise( resolve => resolve(x));
+    const writer = x => {
+        document.writeln(x);
+        return idPromise(x);
+    };
+    const filterEven = n => { if (n % 2 === 0) return n; else throw Error("not even")};
+
+    idPromise(1)
+        .then( writer )
+        .then( filterEven )
+        .then( writer )
+        .catch(err => {} );*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+idPromise(1)
+    .then( writer )
+    .then( it => it + 1)
+    .then( writer );*/
+
+const idPromise = x => new Promise( resolve => resolve(x));
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+const filterEven = n => n % 2 === 0 ? n : undefined;
+
+idPromise(1)
+    .then( writer )
+    .then( filterEven )
+    .then( writer );
+
+
+</script>
+
+</body>
+</html>
