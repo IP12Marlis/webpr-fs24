@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Q23 - promise</title>
+</head>
+<body>
+<script>
+
+/*    const idPromise = x => new Promise( resolve => resolve(x));
+    const writer = x => {
+        document.writeln(x);
+        return idPromise(x);
+    };
+    const filterEven = n => { if (n % 2 === 0) return n; else throw Error("not even")};
+
+    idPromise(1)
+        .then( writer )
+        .then( filterEven )
+        .then( writer )
+        .catch(err => {} );
+    // shows only '1'? YES*/
+
+
+/*
+const idPromise = x => new Promise( resolve => resolve(x));
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+idPromise(1)
+    .then( writer )
+    .then( it => it + 1)
+    .then( writer );
+// shows '1 1' - NO but '1 2'
+*/
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+idPromise(1)
+    .then( writer )
+    .then( it => it + 1)
+    .then( writer );
+// shows '1 2' - YES*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+idPromise(1)
+    .then( it => it )
+    .then( it => document.writeln(it));
+// shows '1 1' - NO but '1'*/
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+idPromise(1)
+    .then( it => { document.writeln(it); return idPromise(it); } )
+    .then( it => document.writeln(it));
+// shows '1 1' - YES*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+const filterEven = n => { if (n % 2 === 0) return n; else throw Error("not even") };
+
+idPromise(1)
+    .then( writer )
+    .then( filterEven )
+    .then( writer )
+    .catch(err => {} /!* do nothing *!/ );
+// Shows more than '1'? - NO shows exactly '1'*/
+
+
+/*const idPromise = x => new Promise( resolve => refresh(x));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+const filterEven = n => n % 2 === 0 ? n : undefined;
+
+idPromise(1)
+.then( writer )
+.then( filterEven )
+.then( writer );
+// Shows '1'? - NO - leer*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+idPromise(1)
+    .then( writer )
+    .then( it => document.writeln(it));
+// Shows '1 1'? YES*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+const filterEven = n => n % 2 === 0 ? n : undefined;
+
+idPromise(1)
+    .then( writer )
+    .then( filterEven )
+    .then( writer );
+// Shows an error in the console? NO - but '1  undefined'*/
+
+/*
+const idPromise = x => new Promise( resolve => resolve(x));
+
+document.writeln(idPromise(1));
+// Shows '1'? - NO but [object Promise]*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+idPromise(1)
+    .then( it => document.writeln(it))
+    .then( it => document.writeln(it));
+// Shows '1 1'? - NO but '1 undefined'*/
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+const filterEven = n => n % 2 === 0 ? n : undefined;
+
+idPromise(1)
+    .then( writer )
+    .then( filterEven )
+    .then( writer );
+// Shows '1 undefined'? - YES*/
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+const inc = n => n + 1;
+const filterEven = n => n % 2 === 0 ? n : undefined;
+
+idPromise(1)
+    .then( writer )
+    .then( inc )
+    .then( writer )
+    .then( filterEven )
+    .then( writer );
+// Shows '1 2 2'? - YES*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+idPromise(1)
+    .then( it => { document.writeln(it); return it; } );
+// Shows '1'? - YES*/
+
+const idPromise = x => new Promise( resolve => resolve(x));
+
+idPromise(1)
+    .then( it => { document.writeln(it); return it; } )
+    .then( it => document.writeln(it));
+// Shows '1 1'? - YES
+
+</script>
+
+</body>
+</html>
