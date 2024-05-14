@@ -9,7 +9,7 @@
 <div id="out"></div>
 
 <script>
-    // Example
+    // Example - JS Asynchronität und ... K. Simpson
 
     // fetch('https://jsonplaceholder.typicode.com/todos/1')
     //     .then( response => response.json())
@@ -25,13 +25,54 @@
         }
     });
 
+    //**************************** aus dem Unterricht
+    const y = x.then( response => response.json());
+    // Was gibt das then zurück? Eine Kette von Promises
+    y.then( todo => console.log(todo.title));
+
+    console.log(y);
+    setTimeout( _ => console.log(y), 1000 );*/
+
+    // mit der gleichen Idee nur andere Syntax sieht so aus:
+    const fetchTodo = async () => {
+        const resp = await fetch('https://jsonplaceholder.typicode.com/todos/2');
+        const todo = await resp.json();
+        console.log(todo.title);
+    };
+
+    fetchTodo();
+
+    /* Promise constructor mit new:
+    *  Promise ist so gemacht, dass es 'new' braucht.
+    *
+    ** @type { (Number) => Promise<Number> }
+    * */
+    const processEven = i => new Promise( (resolve, reject) => { // um eine Promise erzeugen, muss eine Funktion mitgegeben werden (kann ich nennen, wie ich will)
+        // und die Funktion, die wir als Argument mitgegeben wird, enthält zwei Argumente, die wieder vom Typ Funktion sind.
+        // wenn ich resolve aufrufe, werden nachfolgende ... aufgerufen
+        // wenn ich reject aufrufe, werden nur die catches aufgerufen
+        if(i % 2 === 0) {
+            resolve(i); // meine promise ist okay, ich kann weiterarbeiten // ist eine promise von integer // man könnte das i hier auch verarbeiten
+        } else {
+            reject(i);  // es werden nur noch catches aufgerufen.
+        }
+    });
+    //******************************
+
     processEven(4)
         .then( n => {console.log(n); return n})
         .then( n => processEven(n+1))
         .then( n => {console.log("sollte man nicht sehen!", n); return n})
         .catch( n => console.error("error: ", n));
 
+    /*
+        Promise hat kleine Dienstfunktionen, die man aufrufen kann.
+        Beispiel:
+        2. Zeile: .then( n => {console.log(n); return Promise.resolve(n) } ) // anstatt dass ich das ganze "new Promise" - Konstrukt hinschreiben muss
 
+        Die Funktionen geben eine gewisse Sicherheit: Denn in diesem Bsp. ist z.B. garantiert, dass nur gerade Zahlen weiterverarbeitet werden.
+        So können Vorbedingungen garantiert werden.
+     */
 
 
 </script>
