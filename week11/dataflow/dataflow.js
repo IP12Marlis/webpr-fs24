@@ -30,7 +30,7 @@ const DataFlowVariable = createValue => {
         value = createValue();
         return value;
     }
-};
+}
 
 /**
  * @callback onResolveCallback
@@ -67,6 +67,35 @@ const DataFlowVariable = createValue => {
  *     scheduler.addOk ( () => console.log("B"));
  *     // log contains first A, then B
  */
+
+/*
+// im Unterricht programmiert
+const Scheduler = () => {
+    const tasks = [];
+    let   working = false; // am Anfang arbeiten wir nicht
+
+    const work = () => {
+        if(tasks.length < 1) { return; } // mach nichts, ... Schutzklausel
+        if(working){ return; } // ... Schutzklausel
+        working = true;
+        const task = tasks.pop(); // gib mir das letzte Element und lösche es aus dem Array
+        const prom = new Promise( resolve => task(resolve) );
+        prom.then( () => {
+            working = false;
+            work();
+        });
+    };
+    const add = callbackFn => {
+        tasks.splice(0, 0, callbackFn);
+        work();
+    };
+    return {
+        add: add
+    }
+*/
+
+
+// im Unterricht auskommentiert - von D. Koenig zur Verfügung gestellte Version
 const Scheduler = () => {
     let inProcess = false;
     const tasks = [];

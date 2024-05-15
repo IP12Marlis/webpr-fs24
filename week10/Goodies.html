@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Q24 - promise</title>
+</head>
+<body>
+<script>
+    obj = {};
+    obj = 0;
+    obj.abc();
+    // Schutz gegen Fehler
+    // if (obj !== null && obj !== undefined) obj...
+    // stattdessen
+    obj && obj.abc && obj.abc();  // Das Object hat selbst schon einen boolean Wert
+    // Das hat den Nachteil, dass es zuviel macht.
+    // Es wird nicht false zurückgegeben, sondern ein Object
+    // Wenn obj ein abc hat
+    obj = {abc:null};
+    obj = {abc: () => 42};
+    obj?.abc(); // 42
+    obj = null; // null
+    obj?.abc(); // undefined
+    // optional chaining Operator - Fragezeichen Punkt Operator - liest sich besser als die if-Ketten
+    // in den Browser Engines vorhanden
+    obj?.foo?.abc();
+    obj = {abc:null};
+    obj?.abc();
+    //obj?.abc?(); // Syntax nicht korrekt -> ?. Operator
+    obj?.abc?.call(); // rufe abc nur auf, wenn abc eine Funktion ist
+
+</script>
+
+</body>
+</html>

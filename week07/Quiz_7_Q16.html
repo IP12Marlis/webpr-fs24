@@ -17,14 +17,12 @@
     // shows 'true' - No
     */
 
-/*
-    class Person { }
+/*    class Person { }
     class Student extends Peson {}
-    cons s = new Student();
+    const s = new Student();
 
     document.writeln(s instanceof Person);
-    // shows 'true' - No
-    */
+    // shows 'true' - No*/
 
 /*
     class Person {
@@ -56,6 +54,13 @@
     // shows 'true' - Yes
     */
 
+    class Person { }
+    class Student {}
+    const s = new Student();
+    Object.setPrototypeOf(s, Student.prototype);
+    document.writeln(s instanceof Person);
+    // shows 'true' - No
+
 /*
     class Person {
 
@@ -75,12 +80,13 @@
     // shows 'true' - No
     */
 
+/*
     class Person { }
     class Student { }
     const s = new Student();
     Object.setPrototypeOf(Student.prototype, Person.prototype);
     document.writeln(s instanceof Person);
-    // shows 'true' - Yes
+    // shows 'true' - Yes*/
 
 </script>
 
