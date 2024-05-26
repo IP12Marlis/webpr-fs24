@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz 27</title>
+</head>
+<body>
+<script>
+    import {DataFlowVariable} from "./dataflow/dataflow";
+
+    document.writeln("Quiz 27:");
+
+    const x = DataFlowVariable(() => y() * 2);
+    const y = DataFlowVariable(() => 1);
+
+    document.writeln(x());
+
+</script>
+
+</body>
+</html>

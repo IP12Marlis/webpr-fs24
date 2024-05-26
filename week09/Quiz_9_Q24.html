@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Q24 - promise</title>
+</head>
+<body>
+<script>
+
+/*    const idPromise = x => new Promise( resolve => resolve(x));
+    const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+    const writer = x => {
+        document.writeln(x);
+        return idPromise(x);
+    };
+    const inc = n => idPromise(n + 1);
+
+    const foo = async i => {
+        let x = await idPromise(i);
+        while (x < 4) {
+            x = await writer(x);
+            x = await inc(x);
+        }
+    };
+    foo(1);
+    // shows '1 2 3'? - YES*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+const failPromise = err => new Promise( (resolve, reject) => reject(err));
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+const foo = async i => {
+    let x = await idPromise(i);
+    document.writeln(x);
+};
+foo(1);
+// shows '1' - YES*/
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+const foo = async i => {
+    let x = await idPromise(i);
+    x = await writer(x);
+};
+foo(1);
+// shows '1' - YES*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+const inc = n => idPromise(n + 1);
+const filterEven = n => n % 2 === 0 ? idPromise(n): failPromise("not even");
+
+const foo = async i => {
+    let x = await idPromise(i);
+    while (x < 4) {
+        x = await filterEven(x).catch( err => { /!* ignore *!/ });
+        x = await writer(x);
+        x = await inc(x);
+    }
+};
+foo(1);
+// shows '2' - NO but undefined*/
+
+
+const idPromise = x => new Promise( resolve => resolve(x));
+const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+const inc = n => idPromise(n + 1);
+const filterEven = n => n % 2 === 0 ? idPromise(n): failPromise("not even");
+
+const foo = async i => {
+    let x = await idPromise(i);
+    while (x < 4) {
+        x = await filterEven(x);
+        x = await writer(x);
+        x = await inc(x);
+    }
+};
+foo(1);
+// shows '2' - NO but nothing
+
+
+/*const idPromise = x => new Promise( resolve => refresh(x));
+const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+const filterEven = n => n % 2 === 0 ? n : undefined;
+
+idPromise(1)
+.then( writer )
+.then( filterEven )
+.then( writer );
+// Shows '1'? - NO - leer*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+
+idPromise(1)
+    .then( writer )
+    .then( it => document.writeln(it));
+// Shows '1 1'? YES*/
+
+
+/*const idPromise = x => new Promise( resolve => resolve(x));
+
+const writer = x => {
+    document.writeln(x);
+    return idPromise(x);
+};
+const filterEven = n => n % 2 === 0 ? n : undefined;
+
+idPromise(1)
+    .then( writer )
+    .then( filterEven )
+    .then( writer );
+// Shows an error in the console? NO - but '1  undefined'*/
+
+
+
+</script>
+
+</body>
+</html>

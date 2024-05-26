@@ -56,13 +56,13 @@
     document.writeln( handle( () => [1] ).length === 1 );*/
     // shows 'true' - yes
 
-    function handle(callback) {
+/*    function handle(callback) {
         const result = [];
         callback(result);
         return result;
     }
     document.writeln( handle( it => it.push(1) ).length === 1);
-    // shows 'true' -> no
+    // shows 'true' -> no*/
 
     function handle(callback) {
         const result = [];
@@ -70,7 +70,8 @@
         callback(result);
         return result;
     }
-    document.writeln( handle( it => it.push(1) ).length === 2);
+    let it = [];
+    document.writeln( handle( () => it.push(1) ).length === 1);
     // shows 'true' - yes
 
 </script>

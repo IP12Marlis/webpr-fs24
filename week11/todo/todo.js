@@ -28,19 +28,22 @@ const TodoController = () => {
         return newTodo;
     };
 
-    // const scheduler = Scheduler();
+    const scheduler = Scheduler();
     const addFortuneTodo = button => {
-        // button.disabled = true;
+        button.disabled = true;
         const newTodo = Todo();
         todoModel.add(newTodo);
         newTodo.setText("...");
 
-        // scheduler.add( ok => {
+        scheduler.add( ok => {
             fortuneService( text => {
                 newTodo.setText(text);
-               // button.disabled = false;
-               // ok();
-            // });
+                // button.disabled = false; // oder Version Scheduler
+                ok(); // falls alles okay ist, darf weitergearbeitet werden -> resolve, reject -> resolve aufrufen durch ok()
+                // Man muss ziemlich geübt sein, wie man Funktionen verwendet, um solche Herausforderungen in JS zu meistern.
+                // Es dauert für den regulären Einsatz zu lange, aber für unsere Zwecke reicht es vorerst, weil die
+                // Grundanforderung: der Reihe nach, erfüllt ist.
+            });
        });
 
         return newTodo;
