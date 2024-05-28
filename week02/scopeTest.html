@@ -5,91 +5,79 @@
     <title>Scope Tests</title>
 </head>
 <body>
-    <script>
+<script>
 
-        const test = x => document.writeln( String(x));
+    const test = x => document.writeln(String(x));
 
-        let x = 0;  // immer zuerst const anstatt let hinschreiben. Erst wenn ich es wirklich ändern will, auf let wechseln
-                    // Ziel: von 100 Zuweisungen 1 mal let verwenden, sonst const
-        // x = 0;   // even if done badly... -> so landet x im globalen scope und wenn ich innerhalb des Funktionsscopes
-                    // ebenfalls x ohne let initialisiere, wird damit das globale x überschrieben.
-                    // 2. Fall: äusserer Scope: let x; innerhalb Funktion: x ohne let, überschreibt ebenfalls das x des
-                    // äusseren Scopes.
+    let x = 0;
+    /*        function foo() {
+                const x = 1;
+               // x = x + 1;
+                test(x);
+            }*/
 
-        // aus:
-        // function foo() {
-        //     let x = 1;       // lokales x heisst zwar gleich wie das x ausserhalb des Funktionsscopes, ist aber
-                                // eine davon unabhängige Variable. -> shadowing
-        //     document.writeln(String(x));
-        // }
-        // foo();
+    (function foo() {
+        const x = 1;
+        // x = x + 1;
+        test(x);
+    })();
 
-        // lokale Scopes als freistehender Block -> ist kein Ausdruck (Expression) // seit ca. 2017 - ECMA-SCRIPT 8
-        // Funktionen und relativ neu kann man {  } als lokalen Scope verwenden.
-        // Vorher gab es das nicht, weil die Grammatik dadurch etwas schwieriger wird.
-        // {} braucht man, um Objekte zu konstruieren (literaler Objektkonstruktor),
-        // {
-        //     let x = 1;
-        //     document.writeln(String(x));
-        // }
+    //foo();
+    test(x);
 
-        // so ist es ein literaler Objektkonstruktor; es ist ein Ausdruck und evaluiert zu einem Objekt mit der Property a.
-        // {
-        //     a: = 1;
-        // }
+    {
+        let x = 5;
+        document.writeln(String(x))
+    }
 
-        // Es gibt scheinbar unnütze Funktionen, die nur dazu da sind, einen lokalen Scope zu haben -> älterer Code
-        // Nachteil: Das Ding braucht einen Namen. -> named functions -> Namensraumverschmutzung
-        // Weg zur Alternative:
-        // function foo() {
-        //     let x = 1;
-        //     document.writeln(String(x));
-        // } (); // Das ist syntaktisch nicht ganz korrekt, weil die function foo kein Ausdruck ist, sondern eine
-        // Funktionsdeklaration -> keine Expression.
+    // Lambda Kalkül
+    const id = x => x;
+    const Konst = x => y => x; // curried style - liefert immer den ersten Parameter zurück
+    const Kite = x => y => y; // liefert immer den zweiten Parameter zurück
+    const Kite2 = x => Konst (id) (x);
 
-        // (function foo() {
-        //     let x = 1;
-        //     document.writeln(String(x));
-        // }) ();
-        // Wenn ich um die Funktionsdeklaration runde Klammern setze, wird daraus eine Expression, ein Ausdruck.
-        // Das heisst: function expression
+    // document.writeln(id(id));
+    // document.writeln(id);
+    // used in JS
+    test( id(id) === id);
+    test(Konst(id)(undefined) === id);
+    test(Kite(undefined)(id) === id);
+    test(Kite2(undefined)(id) === id);
 
-        // (function () {
-        //     let x = 1;
-        //     document.writeln(String(x));
-        // }) ();
-        // Jetzt kann man sogar den Namen der Funktion weglassen -> anonyme Funktion.
-        // Daraus lässt sich nun eine Lambda-Funktion bilden -> function vorne entfernen, Lambda-Pfeil (fat arrow) zwischen
-        // Argumentklammern und geschweifte Klammer
+    const a1 = y => id(y);
+    const a2 = y => y;
+    test(a1(id) === a2(id));
+    // Is a1 a proper beta expansion of a2? - yes
 
-        // function expression -> hier immediately invoked function expression = IIFE
-        // immer ohne Parameter
-        ( () => {       // IIFE for a local scope -> Weihnachtsmann-Emoji ()=> Kopf mit Bart
-            let x = 1;  // does not accidentally override outer scope
-            document.writeln(String(x));
-        }) ();
-        // Bundler nutzen das manchmal, damit beim Zusammenziehen von JS-Code verhindert wird,
-        // dass die Codeteile sich gegenseitig Variablen überschreiben.
+    const F1 = x => y => Konst (id) (x) (y);
+    const F2 = x => Konst (id) (x);
+    const F3 = Konst (id);
+    test(F3(2));
+    test(F2(1)(id))
+    // Is F3 a proper eta reduction of F2? - ja;
 
-        document.writeln(String(x));
+    document.writeln("***");
+    // Are F1 and F2 alpha-equivalent? - no
+    const B1 = x => ( x => x);
+    const B2 = y => ( x => y);
+    test(B1(1)(1));
+    test(B2(2)(1));
 
-        // lambda calculus
-        const id    = x => x;
-        const Konst = x => y => x;
+    document.writeln("***");
+    // Given id and Konst, is F2 a proper eta reduction of F1? - yes (wegkürzen)
+    const C1 = x => y => Konst (id) (x) (y);
+    const C2 = x =>      Konst (id) (x);
+    const C3 =           Konst (id);
+    test(C2(1)(2));
+    test(C1(1)(2));
 
-        // const Kite = x => y => y;        // beta expand with id
-        // const Kite = x => y => id(y);    // eta reduce
-        // const Kite = x => id;            // beta expand with Konst
-        // const Kite = x => Konst(id)(x);  // eta reduce
-        const Kite = Konst(id);
+    // given id, is a2 a proper beta reduction of a1? -> Variablen einsetzen
+    const A1 = y => id(y);
+    const A2 = y => y;
+    test(A1(2));
+    test(A2(2));
 
-        // used in JavaScript
-
-        test( id(id) === id);
-        test( Konst(id)(undefined) === id);
-        test( Kite(undefined)(id) === id);
-
-    </script>
+</script>
 </body>
 </html>
 
