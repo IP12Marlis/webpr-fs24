@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Week 2 - Q5 - Q6</title>
+</head>
+<body>
+<script>
+    document.writeln("Q6 - Equivalent lambda (function) definitions");
+    // Are id1 and id2 alpha-equivalent? yes
+    const id1 = x => x;
+    const id2 = y => y;
+
+    // Given 'idA2', is a1 a proper beta expansion of a2? yes
+    const idA2 = x => x;
+    const a1 = y => idA2(y);
+    const a2 = y => y; // dies ist auch die id-Funktion
+    // -> gibt denselben Wert zurück, der entgegengenommen wurde.
+
+    // Given 'idA3' and 'konst', is F3 a proper eta reduction of F2?
+    const idA3 = x => x; // Identitätsfunktion
+    const konst = x => y => x;
+    const F1 = x => y => konst (idA3) (x) (y); // mich stört, dass hier beim konst drei Argumente mitgegeben werden
+    const F2 = x =>      konst (idA3) (x);
+    const F3 =           konst (idA3)
+
+    // Are F4 and F5 alpha-equivalent? - jaaa?
+    const F4 = x => (x => x);
+    const F5 = y => (x => y);
+
+    // Given 'idA5', is a4 a proper beta reduction of a3? - ja
+    const idA5 = x => x;
+    const a3 = y => idA5(y);
+    const a4 = y => y;
+
+</script>
+
+</body>
+</html>
