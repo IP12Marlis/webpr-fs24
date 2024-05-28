@@ -77,17 +77,31 @@
         const id    = x => x;
         const Konst = x => y => x;
 
-        // const Kite = x => y => y;        // beta expand with id
-        // const Kite = x => y => id(y);    // eta reduce
-        // const Kite = x => id;            // beta expand with Konst
-        // const Kite = x => Konst(id)(x);  // eta reduce
-        const Kite = Konst(id);
+        const Kite = x => y => y;        // beta expand with id
+        const Kite1 = x => y => id(y);    // eta reduce
+        const Kite2 = x => id;            // beta expand with Konst
+        const Kite3 = x => Konst(id)(x);  // eta reduce
+        const Kite4 = Konst(id);
+        const Kite5 = (x => y => x)(id);    // Konst durch seine Definition ersetzen
+        const Kite6 = (y => id);    // (id) an x binden und alle Vorkommen von x durch (id) ersetzen,
+                                            // Argument löschen, Parameter löschen
+        const Kite7 = (y => x => x);        // (id) durch seine Definition ersetzen
 
         // used in JavaScript
 
         test( id(id) === id);
-        test( Konst(id)(undefined) === id);
-        test( Kite(undefined)(id) === id);
+        test( Konst(id)(undefined) === id); // true
+        test( Kite (undefined)(id) === id); // true
+        test("***");
+        test( Kite1(undefined)(id) === id); // true
+        test( Kite2(undefined)(id) === id); // true
+        test( Kite3(undefined)(id) === id); // true
+        test( Kite4(undefined)(id) === id); // true
+        test( Kite5(undefined)(id) === id); // true
+        test( Kite6(undefined)(id) === id); // true
+        test( Kite7(undefined)(id) === id); // true
+        test("***");
+
 
     </script>
 </body>
