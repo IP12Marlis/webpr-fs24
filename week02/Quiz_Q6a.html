@@ -2,16 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz Week 2 - Q5 - Q6</title>
+    <title>Quiz - Q6a</title>
 </head>
 <body>
 <script>
-    document.writeln("Q6a - first - second")
+    document.writeln("Q6a - eta reductions, returning functions");
+    // Given
     const id = y => y;
     const fst = x => y => x;
-    const snd = fst => id => id;
 
-    document.writeln(snd(3)(5) === 5);
+    // We want to write 'snd' such that it returns the second argument like
+    const snd_ziel = x => y => y;
+    // but we can only use fst and id (not x and y) for the implementation.
+    // You might need eta operations to find the solution.
+    // The start of the function definition is added for you. Provide the function body only.
+    const snd = fst => id; // DAS IST DIE LÖSUNG!!! --- fst => id; ---
+
+    document.writeln(String( snd_ziel(undefined)(id) === id) );
+    document.writeln(String( snd(fst(undefined)(id)) === id ));
+
+    const x_ = Math.random();
+    const y_ = Math.random();
+    document.writeln(String(snd(x_)(y_) === y_));
+    document.writeln(String( snd(fst(undefined)(id)) === id ));
 
 </script>
 
