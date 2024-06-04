@@ -21,6 +21,7 @@ import { report }               from '../util/test.js'
 
     // Hier ist der Test, ob die von anderem Ort importierten Variablen wirklich read only machen
     // Will man Veränderung zulassen, muss man explizit Funktionen coden -> setter
+    // Das hier ist so falsch, dass es nicht durch die Kontrollen des bundler kommt - es ist nicht ausführbar.
     // this kind of test does not work with the bundler as it checks the erroneous assignment
     // try {
     //     a = "shall not work";   // this is expected to fail ...

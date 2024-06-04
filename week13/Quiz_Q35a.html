@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz - Q35a</title>
+</head>
+<body>
+<h1>Iterator of odd numbers</h1>
+<script>
+/*
+ * Given the Iterator constructor as in the lectures:
+ * const Iterator = (startValue, whileFn, incrementFn) => {
+ *  const next = () => {
+ *      const proceed = whileFn(startValue);
+ *      let value = undefined;
+ *      if (proceed) {
+ *          value = startValue;
+ *          startValue = incrementFn(startValue);
+ *      }
+ *      return { value: value, done: !proceed }
+ *  };
+ *  return {
+ *      [Symbol.iterator]: () => ({ next })
+ *  };
+ * };
+ * provide code like
+ * const startValue = ____;
+ * const whileFn    = ____;
+ * const incrementFn = ____;
+ * such that
+ * Iterator(startValue, whileFn, incrementFn);
+ * produces all odd numbers between 10 and 20.
+ */
+
+
+// tested against
+const Iterator = (startValue, whileFn, incrementFn) => {
+    const next = () => {
+        const proceed = whileFn(startValue);
+        let value = undefined;
+        if (proceed) {
+            value = startValue;
+            startValue = incrementFn(startValue);
+        }
+        return {value: value, done: !proceed};
+    };
+    [...Iterator(startValue, whileFn, incrementFn)].toString() === "11,13,15,17,19";
+    }
+}
+
+
+// tests
+
+</script>
+</body>
+</html>

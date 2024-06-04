@@ -7,7 +7,8 @@
 <body>
 <script>
 
-/*    const idPromise = x => new Promise( resolve => resolve(x));
+/* *****************************************************            // XXX
+   const idPromise = x => new Promise( resolve => resolve(x));
     const failPromise = err => new Promise( (resolve, reject) => reject(err));
 
     const writer = x => {
@@ -27,60 +28,64 @@
     // shows '1 2 3'? - YES*/
 
 
-/*const idPromise = x => new Promise( resolve => resolve(x));
-const failPromise = err => new Promise( (resolve, reject) => reject(err));
-const writer = x => {
-    document.writeln(x);
-    return idPromise(x);
-};
+/* ***************************************************
+    const idPromise = x => new Promise( resolve => resolve(x));
+    const failPromise = err => new Promise( (resolve, reject) => reject(err));
 
-const foo = async i => {
-    let x = await idPromise(i);
-    document.writeln(x);
-};
-foo(1);
-// shows '1' - YES*/
+    const writer = x => {
+        document.writeln(x);
+        return idPromise(x);
+    };
 
-/*const idPromise = x => new Promise( resolve => resolve(x));
-const failPromise = err => new Promise( (resolve, reject) => reject(err));
+    const foo = async i => {
+        let x = await idPromise(i);
+        document.writeln(x);
+    };
+    foo(1);
+    // shows '1' - YES*/
 
-const writer = x => {
-    document.writeln(x);
-    return idPromise(x);
-};
+/* ***************************************************
+    const idPromise = x => new Promise( resolve => resolve(x));                     // XXX
+    const failPromise = err => new Promise( (resolve, reject) => reject(err));
 
-const foo = async i => {
-    let x = await idPromise(i);
-    x = await writer(x);
-};
-foo(1);
-// shows '1' - YES*/
+    const writer = x => {
+        document.writeln(x);
+        return idPromise(x);
+    };
 
-
-/*const idPromise = x => new Promise( resolve => resolve(x));
-const failPromise = err => new Promise( (resolve, reject) => reject(err));
-
-const writer = x => {
-    document.writeln(x);
-    return idPromise(x);
-};
-
-const inc = n => idPromise(n + 1);
-const filterEven = n => n % 2 === 0 ? idPromise(n): failPromise("not even");
-
-const foo = async i => {
-    let x = await idPromise(i);
-    while (x < 4) {
-        x = await filterEven(x).catch( err => { /!* ignore *!/ });
+    const foo = async i => {
+        let x = await idPromise(i);
         x = await writer(x);
-        x = await inc(x);
-    }
-};
-foo(1);
-// shows '2' - NO but undefined*/
+    };
+    foo(1);
+    // shows '1' - YES*/
 
 
-const idPromise = x => new Promise( resolve => resolve(x));
+/* ****************************************************
+    const idPromise = x => new Promise( resolve => resolve(x));                     // XXX
+    const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+    const writer = x => {
+        document.writeln(x);
+        return idPromise(x);
+    };
+
+    const inc = n => idPromise(n + 1);
+    const filterEven = n => n % 2 === 0 ? idPromise(n): failPromise("not even");
+
+    const foo = async i => {
+        let x = await idPromise(i);
+        while (x < 4) {
+            x = await filterEven(x).catch( err => { /!* ignore *!/ });
+            x = await writer(x);
+            x = await inc(x);
+        }
+    };
+    foo(1);
+    // shows '2' - NO but undefined*/
+
+/* ******************************************************************
+const idPromise = x => new Promise( resolve => resolve(x));                     // XXX
 const failPromise = err => new Promise( (resolve, reject) => reject(err));
 
 const writer = x => {
@@ -100,10 +105,11 @@ const foo = async i => {
     }
 };
 foo(1);
-// shows '2' - NO but nothing
+// shows '2' - NO but nothing   */
 
 
-/*const idPromise = x => new Promise( resolve => refresh(x));
+/* **********************************************************************
+    const idPromise = x => new Promise( resolve => refresh(x));
 const failPromise = err => new Promise( (resolve, reject) => reject(err));
 
 const writer = x => {
@@ -119,7 +125,8 @@ idPromise(1)
 // Shows '1'? - NO - leer*/
 
 
-/*const idPromise = x => new Promise( resolve => resolve(x));
+/* **********************************************************************
+const idPromise = x => new Promise( resolve => resolve(x));
 const failPromise = err => new Promise( (resolve, reject) => reject(err));
 
 const writer = x => {
@@ -133,7 +140,8 @@ idPromise(1)
 // Shows '1 1'? YES*/
 
 
-/*const idPromise = x => new Promise( resolve => resolve(x));
+/* *********************************************************************
+    const idPromise = x => new Promise( resolve => resolve(x));
 
 const writer = x => {
     document.writeln(x);
@@ -146,6 +154,31 @@ idPromise(1)
     .then( filterEven )
     .then( writer );
 // Shows an error in the console? NO - but '1  undefined'*/
+
+/* *********************************************************************
+    const idPromise = x => new Promise( resolve => resolve(x));                 // XXX
+    const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+    const foo = async i => {
+        let x = await idPromise(i);
+        document.writeln(x);
+    };
+    foo(1);
+    // shows '1' - YES*/
+
+    const idPromise = x => new Promise( resolve => resolve(x));                 // XXX
+    const failPromise = err => new Promise( (resolve, reject) => reject(err));
+
+    const writer = x => {
+        document.writeln(x);
+        return idPromise(x);
+    }
+    const foo = async i => {
+        let x = await idPromise(i);
+        x.then(writer);
+    };
+    foo(1);
+    // shows '1' - NO  [x.then is not a function] */
 
 
 

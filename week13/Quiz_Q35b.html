@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz - Q35b</title>
+</head>
+<body>
+<h1>Infinite iteration</h1>
+<script>
+/*
+ * Given an __infinite__ Iterator over all positive odd nubers named "oddNumbers"
+ * Provide a function "collect" like
+ * const collect = n => oddNumbers => ___;
+ * that returns the sum of the first n odd numbers.
+ */
+
+
+// tested against
+const Iterator = (startValue, whileFn, incrementFn) => {
+    const next = () => {
+        const proceed = whileFn(startValue);
+        let value = undefined;
+        if (proceed) {
+            value = startValue;
+            startValue = incrementFn(startValue);
+        }
+        return { value: value, done: !proceed };
+    };
+};
+const oddNumbers = () => Iterator(1, x => true, x => x + 2);
+const _x = Math.floor( 1 + Math.random() * 100);
+// collect(3)(oddNumbers()) === 9 &&
+// collect(6)(oddNumbers()) === 36 &&
+// collect(_x)(oddNumbers()) === _x * _x;
+
+</script>
+</body>
+</html>

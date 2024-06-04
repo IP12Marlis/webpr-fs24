@@ -16,6 +16,8 @@ let a = null; // these variables are exported as read-only
 let a = null; // these variables are exported as read-only, man kann sie nur hier drin verändern
 let b = null;
 
+
+// hier wird mit Absicht (nicht aus Versehen) ermöglicht, auf die Variablen a und b verändernd zuzugreifen.
 const setA = v => a = v;
 const setB = v => b = v;
 

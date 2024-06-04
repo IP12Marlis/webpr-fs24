@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Week 7 - Quiz</title>
+    <title>Week 7 - Quiz - Q16a</title>
 </head>
 <body>
 <script>
@@ -27,7 +27,10 @@
 
     const then = x => y => y(x);
 
-    console.log(inc.then(double).then(double) (1));
+    console.log( (await inc.then(double).then(double)) (1));
+
+    // tested against
+// add.then(mult).then(add) (1) === (1 + add_) * factor_ + add_
 
 </script>
 

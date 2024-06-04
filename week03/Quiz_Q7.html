@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz - Q7</title>
+</head>
+<body>
+<script>
+    document.writeln("Working with pair (T and F are as in the lectures)");
+
+    // standard definition of pair
+    const pair = a => b => f => f(a)(b);
+    const T     = a => b => a;
+    const F     = a => b => b;
+    const fst = p => p(T);
+    const snd = p => p(F);
+
+
+/*    // shows true? - NO nichts wird angezeigt
+    const pairEq  = a => b => fst(a) === fst(b) && snd(a) === snd(b);
+    const pairMap = f => pair (f(fst(p))) (f(snd(p)));
+    const oneTwo  = pair(1)(2);
+    const square  = x => x * x;
+    const result  = pairMap (square) (oneTwo);
+    document.writeln(pairEq(result)(pair(1)(4)));*/
+
+/*    // throws reference error - YES
+    const oneTwo = pair(1)(2);
+    fst(oneTwo) = 0;
+    document.writeln(fst(oneTwo) === 0);*/
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -6,14 +6,42 @@
 </head>
 <body>
 <script>
+    // FEHLERMELDUNG - erst Module repetieren
+    // Uncaught SyntaxError: Cannot use import statement outside a module
     import {DataFlowVariable} from "./dataflow/dataflow";
 
     document.writeln("Quiz 27:");
 
+    // Basis aller Aufgaben
     const x = DataFlowVariable(() => y() * 2);
-    const y = DataFlowVariable(() => 1);
+    let y = DataFlowVariable(() => 1);
 
-    document.writeln(x());
+    /* 1 ***********************************
+    x();
+    y = DataFlowVariable( () => 2);
+    // shows '4'? - Nein -> leer
+    */
+
+    /* 2 ***********************************
+    y = DataFlowVariable( () => 2);
+    // shows '4'? - Nein -> leer
+    */
+
+    /* 3 **********************************
+    const v = DataFlowVariable(() => w() * 2);
+    const w = DataFlowVariable(() => 1);
+    */
+
+    /* 4 *********************************
+    y = DataFlowVariable( () => 2);
+    */
+
+    /* 5 *********************************
+    x();
+    y = DataFlowVariable( () => 2);
+    */
+    // Ausgabe aller Aufgaben
+    document.writeln((x));
 
 </script>
 
