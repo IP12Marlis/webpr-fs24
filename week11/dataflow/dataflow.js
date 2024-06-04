@@ -31,6 +31,7 @@ const DataFlowVariable = createValue => {
         return value;
     }
 }
+};
 
 /**
  * @callback onResolveCallback
@@ -67,6 +68,7 @@ const DataFlowVariable = createValue => {
  *     scheduler.addOk ( () => console.log("B"));
  *     // log contains first A, then B
  */
+<<<<<<< HEAD
 
 /*
 // im Unterricht programmiert
@@ -96,6 +98,8 @@ const Scheduler = () => {
 
 
 // im Unterricht auskommentiert - von D. Koenig zur Verfügung gestellte Version
+=======
+>>>>>>> origin/main
 const Scheduler = () => {
     let inProcess = false;
     const tasks = [];

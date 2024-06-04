@@ -12,6 +12,7 @@ const pi = Math.PI;
 
 // make a single state that is only exposed as values, not references to objects
 
+let a = null; // these variables are exported as read-only
 let a = null; // these variables are exported as read-only, man kann sie nur hier drin verändern
 let b = null;
 

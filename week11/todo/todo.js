@@ -31,6 +31,7 @@ const TodoController = () => {
     const scheduler = Scheduler();
     const addFortuneTodo = button => {
         button.disabled = true;
+        // button.disabled = true;
         const newTodo = Todo();
         todoModel.add(newTodo);
         newTodo.setText("...");
@@ -43,6 +44,8 @@ const TodoController = () => {
                 // Man muss ziemlich geübt sein, wie man Funktionen verwendet, um solche Herausforderungen in JS zu meistern.
                 // Es dauert für den regulären Einsatz zu lange, aber für unsere Zwecke reicht es vorerst, weil die
                 // Grundanforderung: der Reihe nach, erfüllt ist.
+               // button.disabled = false;
+               ok();
             });
        });
 
