@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz 9</title>
+</head>
+<body>
+<script>
+    document.writeln("Quiz - Q9");
+
+    const Left = x => f => g => f (x);
+    const Right = x => f => g => g (x);
+    const either = e => f => g => e (f) (g);
+
+    const safeDiv = num => divisor =>
+        divisor === 0
+            ? Left ("cannot divide by 0")
+            : Right (num / divisor);
+
+    /*// shows true? - YES
+    const result = safeDiv(1)(1);
+    either (result)
+    (msg => document.writeln(msg))
+    (val => document.writeln(val === 1));*/
+
+/*
+    // produces no output (fails silently)? - YES
+    const result = safeDiv(1)(0);
+    either (result)
+    (msg => document.writeln(msg))
+*/
+
+    // shows 'cannot divide by 0'? - NO
+    const result = safeDiv(1)(0);
+    either (result)
+    (msg => document.writeln(msg))
+
+
+
+
+</script>
+
+</body>
+</html>

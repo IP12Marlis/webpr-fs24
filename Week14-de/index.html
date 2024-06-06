@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<sript>
+    // roman numerals
+
+    // Prüfe, ob die nächste Zahl (a) < übernächste Zahl (b) ist
+    // ja -> b -a
+    // else -> Summer + a
+
+    // Datenstrukturvarianten
+    const values = [
+    { roman: "IV",  number: 4 }
+    { roman: "I",   number: 1 }
+    { roman: "V",   number: 5 }
+    ];
+
+
+    /* oder... Video 2
+    }
+
+
+
+    const toNumber = roman => {
+    if(roman == "") return 0;
+    if(roman.startsWith("I")) return 1 + toNumber(roman.slice(1));
+    if(roman.startsWith("V")) return 5 + toNumber(roman.slice(1));
+    if(roman.startsWith("X")) return 10 + toNumber(roman.slice(1));
+    if(roman.startsWith("L")) return 50 + toNumber(roman.slice(1));
+    if(roman.startsWith("C")) return 100 + toNumber(roman.slice(1));
+    if(roman.startsWith("D")) return 500 + toNumber(roman.slice(1));
+    if(roman.startsWith("M")) return 1000 + toNumber(roman.slice(1));
+    };
+
+    document.writln(Stirng(toNumber("") === 0));
+    document.writln(Stirng(toNumber("I") === 1));
+    document.writln(Stirng(toNumber("II") === 2));
+    document.writln(Stirng(toNumber("III") === 3));
+    document.writln(Stirng(toNumber("IV") === 4));
+    document.writln(Stirng(toNumber("V") === 5));
+    document.writln(Stirng(toNumber("VI") === 6));
+
+
+</sript>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz 9c</title>
+</head>
+<body>
+<script>
+    document.writeln("Q9c");
+/* Given the function definitions from the lecture for 'either', 'Left', 'Right', 'id', and safeDiv as shown below,
+provide a function 'eShow' that takes the result from safeDiv and returns either the error string (in case of division by 0)
+of otherwise the success message "Result is: " with the result appended.
+Provided is:
+  const Left = x => f => g => f(x);
+  ...
+ */
+
+    const Left = x => f => g => f(x);
+    const Right = x => f => g => g(x);
+    const either = e => f => g => e (f) (g);
+    const id = x => x;
+//*****************************************************
+    // funktioniert noch nicht
+    const eShow = e => {
+        return safeDiv(Right => Right(x))(Left => Left(x));
+    };
+//*****************************************************
+// tested against
+    const x_ = Math.random();
+    const safeDiv = num => divisor =>
+        divisor === 0
+            ? Left ("cannot divide by 0")
+            : Right (num / divisor);
+    document.writeln( safeDiv(1)(0)) === "Cannot divide by 0" );
+    document.writeln( safeDiv(x_)(1)) === "Result is: "+x_);
+
+</script>
+
+</body>
+</html>

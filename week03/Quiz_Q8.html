@@ -5,7 +5,74 @@
     <title>Quiz - Q8</title>
 </head>
 <body>
+<h1>implementing a triple</h1>
 <script>
+// Basis
+const s1 = x => y => z => x; // select 1st arg
+const s2 = x => y => z => y; // select 2nd arg
+const s3 = x => y => z => z; // select 3rd arg
+
+const triple = x => y => z => f => f(x)(y)(z);
+const a = t => t(s1);
+const b = t => t(s2);
+const c = t => t(s3);
+
+/*    // shows true? - YES
+    const person = triple;
+    const firstname = a;
+    const lastname = b;
+    const age = c;
+
+    const bran = person("Brendan")("Eich")(50);
+
+    document.writeln( firstname(bran) === "Brendan");*/
+
+/*// shows true? - YES
+const person = triple;
+const firstname = a;
+const lastname = b;
+const age = c;
+
+const bran = person("Brendan");
+const raven = bran("Stark")(16);
+const eich = bran("Eich")(50);
+
+document.writeln( age(raven) === 16 );*/
+
+/*// shows true? - NO
+const person = triple;
+const firstname = a;
+const lastname = b;
+const age = c;
+
+const bran = person("Brendan");
+const raven = bran("Stark")(16);
+const eich = bran("Eich")(50);
+
+document.writeln( firstname(bran) === "Brendan");*/
+
+/*// shows true? - NO
+const oneTwoThree = triple(1);
+
+document.writeln( a(oneTwoThree) === 1);*/
+
+// shows true? - NO
+const oneTwoThree = triple(1)(2)(3);
+
+document.writeln( a(oneTwoThree) === 1);
+
+// shows true? - YES
+const person = triple;
+const firstname = a;
+const lastname = b;
+const age = c;
+
+const bran = person("Brendan")("Eich")(50);
+
+document.writeln( firstname(bran) === "Brendan");
+
+
+
 
 </script>
 
