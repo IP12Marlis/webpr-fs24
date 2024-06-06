@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lambda calculus by G. Lebec</title>
+</head>
+<body>
+<script>
+    document.writeln("Beispiele aus dem Video");
+
+    const add = a => b => a + b;
+
+    document.writeln(String(add(1))); // b => a + b
+    document.writeln(" *** ");
+    document.writeln(String(add(1)(3))); // 4
+    document.writeln(" *** ");
+
+    const fstArgument = add(1); // speichert b => a + b
+    document.writeln(String(fstArgument(7))); // rechnet mit b => a + b weiter und gibt 8 aus.
+    document.writeln(" *** ");
+
+    // eigene Experimente
+    const subtract = a => b => a - b;
+
+    document.writeln(String(subtract(8)(3)));
+    document.writeln(" *** ");
+    document.writeln(String(subtract(3)(8)));
+    document.writeln(" *** ");
+  //  document.writeln(String(add(1)(3)(8))); // Console: Uncaught TypeError: add(...)(...) is not a function
+    document.writeln(" *** Mockingbird mit Identity *** ");
+    // zu viele Argumente mitgeben resultiert in keiner Ausgabe, weil nicht definiert.
+    // dazu bräuchte es wohl Rekursion?
+
+    // durch Klammern eine andere Reihenfolge bestimmen - überarbeiten - funktioniert noch nicht
+ //   const multiplyTwoArgsSum = a => b => a + b *2;
+    //   document.writeln(String(multiplyTwoArgsSum(5)(4)));
+
+
+    // Identity
+    const I = a => a;
+
+    // Mockingbird
+    const M = f => f(f);
+    document.writeln(String(M(I))); // returns: Identity-Function
+    document.writeln(" *** Kestrel mit Identity *** ");
+
+    // Kestrel
+    const K = a => b => a;
+    document.writeln(String(K(I)(M))); // Returns: Identity-Function
+    document.writeln(" *** Kestrel mit Kestrel und Mockingbird *** ");
+    document.writeln(String(K(K)(M))); // Returns: Kestrel-Function
+
+    // Kite
+    const KI = a => b => b;
+    document.writeln(" *** Kite mit Mockingbird und Kite *** ");
+    document.writeln(String(KI(M)(KI))); // returns: Kite-Function
+
+    // Cardinal
+    const C = f => a => b => f (b)(a);
+
+    // Booleans
+    const bool = f => K => KI;  // K gibt das erste Argument zurück, KI gibt das zweite zurück.
+    const T = K;
+    const F = KI;
+
+    const not1 = p => p (F)(T);
+    const not2 = p => p(C);
+
+    document.writeln(" *** not1 mit Kestrel -> Kite ");
+    document.writeln(String(not1(K)));
+    document.writeln(" *** not1 mit Kite -> Kestrel ");
+    document.writeln(String(not1(K)));
+    const and1 = p => q => p (q)(p);
+    const and2 = p => q => p (q)(p);
+
+    document.writeln(" *** ");
+    document.writeln(" *** ");
+
+    const or1 = p => q => p (p)(q);
+    const or2 = M;
+    document.writeln(" *** ");
+    document.writeln(" *** ");
+
+    const bool_eq = p => q => p(q)(not(q));
+
+    document.writeln(" *** ");
+
+
+</script>
+
+</body>
+</html>
